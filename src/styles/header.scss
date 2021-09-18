@@ -1,0 +1,14 @@
+header {
+  width  : 100%;
+  display: flex;
+
+  a {
+    border-top-left-radius : 15px;
+    border-top-right-radius: 15px;
+    flex-basis             : 50%;
+    text-align             : center;
+    display                : block;
+    background-color       : #fff;
+    height                 : 30px;
+  }
+}

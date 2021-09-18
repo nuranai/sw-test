@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+.pagination__container {
+  position  : relative;
+  display   : flex;
+  list-style: none;
+}
+
+.pagination__page {
+  display: inline-block;
+  padding: 10px 15px;
+  border : 1px solid grey;
+  cursor : pointer;
+  background-color: #fff;
+}
+
+.pagination__page:hover:not(.pagination__active) {
+  background-color: lightgrey;
+}
+
+.pagination__button {
+  margin: 0px 10px;
+}
+
+.pagination__active {
+  background-color: #ddd;
+}
