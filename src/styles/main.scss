@@ -21,6 +21,7 @@
     width: 100%;
   }
   .character_name img {
+    cursor: pointer;
     float: right;
     width: 30px;
   }
@@ -29,4 +30,8 @@
 .search {
   margin-top: 15px;
   margin-left: 40px;
+}
+
+.main label {
+  color: #fff;
 }

@@ -1,22 +1,22 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import Header from './components/Header'
 import MainPage from './components/MainPage';
 import Favourites from './components/Favourites';
 import './styles/styles.scss'
 
 function App() {
+
+  const view = useSelector(state => state.view)
+
   return (
-    <Router>
+    <>
       <Header />
-      <Switch>
-        <Route exact path="/">
-          <MainPage/>
-        </Route>
-        <Route path="/favourites">
-          <Favourites/>
-        </Route>
-      </Switch>
-    </Router>
+      {
+        view === 'main'
+          ? <MainPage />
+          : <Favourites />
+      }
+    </>
   );
 }
 

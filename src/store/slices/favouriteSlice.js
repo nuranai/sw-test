@@ -7,16 +7,26 @@ const favouriteSlice = createSlice({
   initialState,
   reducers: {
     favouriteAdded(state, action) {
-      // if character already exists don't add to favourites
-      const isCharacterExist = state.findIndex((character) => character.name === action.payload.characterInfo.name)
-      if (isCharacterExist === -1) {
-        state.push(action.payload.characterInfo)
+      state.push(action.payload)
+      localStorage.favourites = JSON.stringify(state)
+    },
+    favouriteRemove(state, action) {
+      const characterPosition = state.findIndex(character => character.name === action.payload.name)
+      if (characterPosition > -1) {
+        state.splice(characterPosition, 1)
         localStorage.favourites = JSON.stringify(state)
       }
-    }
+    },
+    favouriteSort(state, action) {
+      state.sort((a, b) => {
+        if (a[action.payload.sortType] < b[action.payload.sortType]) return action.payload.sortDirection === 'ascend' ? -1 : 1
+        if (a[action.payload.sortType] > b[action.payload.sortType]) return action.payload.sortDirection === 'ascend' ? 1 : -1
+        return 0
+      })
+    },
   }
 })
 
 export default favouriteSlice.reducer
 
-export const { favouriteAdded } = favouriteSlice.actions
+export const { favouriteAdded, favouriteRemove, favouriteSort } = favouriteSlice.actions
